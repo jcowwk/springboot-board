@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>id</th>
+        <th>boradTitle</th>
+        <th>boardContent</th>
+        <th>writtenDate</th>
+        <th>updateDate</th>
+        <th>memberEmail</th>
+    </tr>
+    <tr>
+        <td th:text="${board.id}"></td>
+        <td th:text="${board.boardTitle}"></td>
+        <td th:text="${board.boardContent}"></td>
+        <td th:text="${board.writtenDate}"></td>
+        <td th:text="${board.updateDate}"></td>
+        <td th:text="${board.memberEmail}"></td>
+    </tr>
+</table>
+</body>
+</html>

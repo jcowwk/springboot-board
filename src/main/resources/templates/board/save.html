@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>save</title>
+</head>
+<body>
+<form action="/board/save" method="post">
+    <input type="text" th:value="${board.memberEmail}" name="memberEmail"> <br>
+    글제목: <input type="text" name="boardTitle"> <br>
+    글내용: <input type="text" name="boardContent"> <br>
+    <input type="submit" value="등록">
+</form>
+</body>
+</html>

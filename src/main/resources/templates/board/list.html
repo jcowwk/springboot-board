@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>list</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>id</th>
+        <th>boardTitle</th>
+        <th>memberEmail</th>
+        <th>writtenDate</th>
+        <th>상세조회</th>
+        <th>수정</th>
+        <th>삭제</th>
+    </tr>
+    <tr th:each="board: ${boardList}">
+        <td th:text="${board.id}"></td>
+        <td th:text="${board.boardTitle}"></td>
+        <td th:text="${board.memberEmail}"></td>
+        <td th:text="${board.writtenDate}"></td>
+        <td>
+            <a th:href="@{|/board/${board.id}|}">조회</a>
+        </td>
+        <td>
+            <a th:href="@{|/board/update/${board.id}|}">수정</a>
+        </td>
+        <td>
+            <a th:href="@{|/board/delete/${board.id}|}">삭제</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

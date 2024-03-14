@@ -64,7 +64,11 @@ public class MemberService {
         memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDTO));
     }
 
-    public void deleteById(Long id) {
-        memberRepository.deleteById(id);
+    public void deleteById(Long id, String loginId) {
+        String selectId = Long.toString(id);
+
+        if(selectId.equals(loginId)) {
+            memberRepository.deleteById(id);
+        }
     }
 }

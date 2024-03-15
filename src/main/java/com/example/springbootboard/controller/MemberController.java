@@ -28,7 +28,10 @@ public class MemberController {
     }
 
     @GetMapping("/member/login")
-    public String loginForm() {
+    public String loginForm(HttpSession session) {
+        if(session.getAttribute("loginEmail") != null) {
+            return "main";
+        }
         return "member/login";
     }
 

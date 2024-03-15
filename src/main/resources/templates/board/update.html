@@ -12,5 +12,6 @@
     내용: <input type="text" th:value="${updateBoard.boardContent}" name="boardContent">
     <input type="submit" value="글수정">
 </form>
+<a th:href="@{|/board/${updateBoard.id}|}">뒤로</a>
 </body>
 </html>

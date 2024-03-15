@@ -12,7 +12,6 @@
         <th>memberPassword</th>
         <th>memberName</th>
         <th>상세조회</th>
-        <th>삭제</th>
     </tr>
     <tr th:each="member: ${memberList}">
         <td th:text="${member.id}"></td>
@@ -24,5 +23,6 @@
         </td>
     </tr>
 </table>
+<a href="/admin">뒤로</a>
 </body>
 </html>

@@ -31,8 +31,9 @@ public class BoardController {
     }
 
     @GetMapping("/board/{id}")
-    public String boardDetail(@PathVariable Long id, Model model) {
+    public String boardDetail(@PathVariable Long id, Model model, HttpSession session) {
         BoardDTO boardDTO = boardService.findById(id);
+        session.setAttribute("selectId", id);
         model.addAttribute("board", boardDTO);
         return "board/detail";
     }
@@ -56,7 +57,9 @@ public class BoardController {
     @GetMapping("/board/update")
     public String updateForm(HttpSession session, Model model) {
         String myEmail = (String) session.getAttribute("loginEmail");
-        BoardDTO boardDTO = boardService.updateForm(myEmail);
+        Long myId = (Long) session.getAttribute("selectId");
+
+        BoardDTO boardDTO = boardService.updateBoard(myEmail, myId);
         model.addAttribute("updateBoard", boardDTO);
         return "board/update";
     }
@@ -65,5 +68,12 @@ public class BoardController {
     public String update(@ModelAttribute BoardDTO boardDTO) {
         boardService.update(boardDTO);
         return "redirect:/board/" + boardDTO.getId();
+    }
+
+    @GetMapping("/board/delete/{id}")
+    public String deleteById(@PathVariable Long id, HttpSession session) {
+        String loginEmail = String.valueOf(session.getAttribute("loginEmail"));
+        boardService.deleteById(loginEmail, id);
+        return "redirect:/board";
     }
 }

@@ -45,12 +45,33 @@ public class BoardService {
         boardRepository.save(BoardEntity.toBoardEntity(boardDTO));
     }
 
-    public BoardDTO updateForm(String myEmail) {
-        BoardDTO boardDTO = new BoardDTO();
-        return boardDTO;
+    public BoardDTO updateBoard(String myEmail, Long myId) {
+        Optional<BoardEntity> optionalBoardEntity = boardRepository.findById(myId);
+
+        if (optionalBoardEntity.isPresent()) {
+            BoardEntity boardEntity = optionalBoardEntity.get();
+
+            if (boardEntity.getMemberEmail().equals(myEmail)) {
+                return BoardDTO.toBoardDTO(boardEntity);
+            }
+        }
+
+        return null;
     }
 
     public void update(BoardDTO boardDTO) {
         boardRepository.save(BoardEntity.toUpdateBoardEntity(boardDTO));
+    }
+
+    public void deleteById(String loginEmail, Long id) {
+        Optional<BoardEntity> optionalBoardEntity = boardRepository.findById(id);
+
+        if (optionalBoardEntity.isPresent()) {
+            BoardEntity boardEntity = optionalBoardEntity.get();
+
+            if (boardEntity.getMemberEmail().equals(loginEmail)) {
+                boardRepository.deleteById(id);
+            }
+        }
     }
 }

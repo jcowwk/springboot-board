@@ -44,6 +44,11 @@ public class BoardEntity {
     public static BoardEntity toUpdateBoardEntity(BoardDTO boardDTO) {
         BoardEntity boardEntity = new BoardEntity();
 
+        boardEntity.setId(boardDTO.getId());
+        boardEntity.setBoardTitle(boardDTO.getBoardTitle());
+        boardEntity.setBoardContent(boardDTO.getBoardContent());
+        boardEntity.setMemberEmail(boardDTO.getMemberEmail());
+
         return boardEntity;
     }
 }

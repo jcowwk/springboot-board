@@ -13,6 +13,7 @@
         <th>writtenDate</th>
         <th>updateDate</th>
         <th>memberEmail</th>
+        <th>수정</th>
     </tr>
     <tr>
         <td th:text="${board.id}"></td>
@@ -21,6 +22,7 @@
         <td th:text="${board.writtenDate}"></td>
         <td th:text="${board.updateDate}"></td>
         <td th:text="${board.memberEmail}"></td>
+        <td><a href="/board/update">수정</a></td>
     </tr>
 </table>
 </body>
